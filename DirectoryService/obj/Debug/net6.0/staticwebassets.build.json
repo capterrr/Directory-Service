@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Di+HcRlSsI2DZ2w4adcIa4IBCSCTKjALPw8zZZhaYxY=",
+  "Source": "DirectoryService",
+  "BasePath": "_content/DirectoryService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

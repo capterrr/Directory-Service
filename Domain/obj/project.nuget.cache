@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ty7PqpPI+LGEqdRmWX+JgYgGj8tPC++9z6dvpkxRvJDYT9hFCHD6lQC2G57Qai1+oDnBnqhlY5ZHABekeMH2ow==",
+  "success": true,
+  "projectFilePath": "/home/snfex/Desktop/Directory/Domain/Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/snfex/.nuget/packages/microsoft.netcore.app.ref/6.0.8/microsoft.netcore.app.ref.6.0.8.nupkg.sha512",
+    "/home/snfex/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.8/microsoft.aspnetcore.app.ref.6.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
