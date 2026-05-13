@@ -1,33 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "/home/snfex/Desktop/Directory/Domain.Tests/Domain.Tests.csproj": {}
+    "D:\\Directory-Service\\Domain.Tests\\Domain.Tests.csproj": {}
   },
   "projects": {
-    "/home/snfex/Desktop/Directory/Domain.Tests/Domain.Tests.csproj": {
+    "D:\\Directory-Service\\Domain.Tests\\Domain.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/snfex/Desktop/Directory/Domain.Tests/Domain.Tests.csproj",
+        "projectUniqueName": "D:\\Directory-Service\\Domain.Tests\\Domain.Tests.csproj",
         "projectName": "Domain.Tests",
-        "projectPath": "/home/snfex/Desktop/Directory/Domain.Tests/Domain.Tests.csproj",
-        "packagesPath": "/home/snfex/.nuget/packages/",
-        "outputPath": "/home/snfex/Desktop/Directory/Domain.Tests/obj/",
+        "projectPath": "D:\\Directory-Service\\Domain.Tests\\Domain.Tests.csproj",
+        "packagesPath": "C:\\Users\\stud\\.nuget\\packages\\",
+        "outputPath": "D:\\Directory-Service\\Domain.Tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/snfex/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\stud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/snfex/Desktop/Directory/Domain/Domain.csproj": {
-                "projectPath": "/home/snfex/Desktop/Directory/Domain/Domain.csproj"
+              "D:\\Directory-Service\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Directory-Service\\Domain\\Domain.csproj"
               }
             }
           }
@@ -36,7 +42,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -77,11 +89,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.8, 6.0.8]"
+              "version": "[6.0.36, 6.0.36]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.8, 6.0.8]"
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
             }
           ],
           "frameworkReferences": {
@@ -89,26 +105,32 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.108\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/snfex/Desktop/Directory/Domain/Domain.csproj": {
+    "D:\\Directory-Service\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/snfex/Desktop/Directory/Domain/Domain.csproj",
+        "projectUniqueName": "D:\\Directory-Service\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/home/snfex/Desktop/Directory/Domain/Domain.csproj",
-        "packagesPath": "/home/snfex/.nuget/packages/",
-        "outputPath": "/home/snfex/Desktop/Directory/Domain/obj/",
+        "projectPath": "D:\\Directory-Service\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\stud\\.nuget\\packages\\",
+        "outputPath": "D:\\Directory-Service\\Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/snfex/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\stud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -121,7 +143,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net6.0": {
@@ -140,11 +168,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.8, 6.0.8]"
+              "version": "[6.0.36, 6.0.36]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.8, 6.0.8]"
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
             }
           ],
           "frameworkReferences": {
@@ -152,7 +184,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.108\\RuntimeIdentifierGraph.json"
         }
       }
     }

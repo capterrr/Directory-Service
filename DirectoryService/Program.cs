@@ -26,7 +26,6 @@ PositionStorage.InitializeStorage();
 
 app.Run();
 
-// ==================== REQUEST MODELS ====================
 
 public record CreateLocationRequest(
     string Name,

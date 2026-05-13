@@ -117,4 +117,5 @@ public sealed class Location
             throw new ArgumentException("UpdatedAt must be later than current UpdatedAt.", nameof(updatedAt));
         }
     }
+    
 }
