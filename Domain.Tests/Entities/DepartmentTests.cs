@@ -71,11 +71,11 @@ public class DepartmentTests
         var department = CreateTestDepartment();
         var position = CreateTestPosition();
 
-        var updated = department.AddPosition(position, UtcDateTime.Create(_updatedAt.AddMinutes(1)));
+        var updated = department.AddPosition(position, Rank.Create(1), UtcDateTime.Create(_updatedAt.AddMinutes(1)));
 
-        Assert.Contains(updated.Positions, p => p.Id.Value == position.Id.Value);
-        var addedPosition = updated.Positions.First(p => p.Id.Value == position.Id.Value);
-        Assert.Contains(_id, addedPosition.DepartmentIds);
+        Assert.Contains(updated.Positions, p => p.Position.Id.Value == position.Id.Value);
+        var addedPosition = updated.Positions.First(p => p.Position.Id.Value == position.Id.Value);
+        Assert.Contains(_id, addedPosition.Position.DepartmentIds);
     }
 
     [Fact]
@@ -83,9 +83,9 @@ public class DepartmentTests
     {
         var department = CreateTestDepartment();
         var position = CreateTestPosition();
-        department = department.AddPosition(position, UtcDateTime.Create(_updatedAt.AddMinutes(1)));
+        department = department.AddPosition(position, Rank.Create(1), UtcDateTime.Create(_updatedAt.AddMinutes(1)));
 
-        Assert.Throws<InvalidOperationException>(() => department.AddPosition(position, UtcDateTime.Create(_updatedAt.AddMinutes(2))));
+        Assert.Throws<InvalidOperationException>(() => department.AddPosition(position, Rank.Create(2), UtcDateTime.Create(_updatedAt.AddMinutes(2))));
     }
 
     [Fact]
@@ -101,9 +101,9 @@ public class DepartmentTests
             UtcDateTime.Create(_createdAt),
             UtcDateTime.Create(_updatedAt));
 
-        department = department.AddPosition(position1, UtcDateTime.Create(_updatedAt.AddMinutes(1)));
+        department = department.AddPosition(position1, Rank.Create(1), UtcDateTime.Create(_updatedAt.AddMinutes(1)));
 
-        Assert.Throws<InvalidOperationException>(() => department.AddPosition(position2, UtcDateTime.Create(_updatedAt.AddMinutes(2))));
+        Assert.Throws<InvalidOperationException>(() => department.AddPosition(position2, Rank.Create(2), UtcDateTime.Create(_updatedAt.AddMinutes(2))));
     }
 
     [Fact]
@@ -152,11 +152,11 @@ public class DepartmentTests
     {
         var department = CreateTestDepartment();
         var position = CreateTestPosition();
-        department = department.AddPosition(position, UtcDateTime.Create(_updatedAt.AddMinutes(1)));
+        department = department.AddPosition(position, Rank.Create(1), UtcDateTime.Create(_updatedAt.AddMinutes(1)));
 
         var updated = department.RemovePosition(position.Id, UtcDateTime.Create(_updatedAt.AddMinutes(2)));
 
-        Assert.DoesNotContain(updated.Positions, p => p.Id.Value == position.Id.Value);
+        Assert.DoesNotContain(updated.Positions, p => p.Position.Id.Value == position.Id.Value);
     }
 
     [Fact]

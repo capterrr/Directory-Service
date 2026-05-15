@@ -1,6 +1,6 @@
-using DirectoryService.Storage;
-using Domain.Entities;
-using Domain.ValueObjects;
+using DirectoryService.Application.Commands.Position;
+using DirectoryService.Application.Queries.Position;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DirectoryService.Controllers;
@@ -9,15 +9,23 @@ namespace DirectoryService.Controllers;
 [Route("api/positions")]
 public class PositionsController : ControllerBase
 {
+    private readonly IMediator _mediator;
+
+    public PositionsController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
     /// <summary>
-    /// Get all active positions
+    /// Get all positions
     /// </summary>
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {
         try
         {
-            var positions = PositionStorage.GetAll();
+            var query = new GetAllPositionsQuery();
+            var positions = await _mediator.Send(query, cancellationToken);
             return Ok(positions.Select(p => new
             {
                 p.Id,
@@ -38,11 +46,13 @@ public class PositionsController : ControllerBase
     /// Get position by ID
     /// </summary>
     [HttpGet("{id:guid}")]
-    public IActionResult GetById(Guid id)
+    public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
     {
         try
         {
-            var position = PositionStorage.GetById(EntityId.Create(id));
+            var query = new GetPositionByIdQuery { Id = id };
+            var position = await _mediator.Send(query, cancellationToken);
+
             if (position == null)
             {
                 return NotFound(new { message = "Position not found" });
@@ -58,10 +68,6 @@ public class PositionsController : ControllerBase
                 position.UpdatedAt
             });
         }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
         catch (Exception ex)
         {
             return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Internal server error" });
@@ -72,24 +78,11 @@ public class PositionsController : ControllerBase
     /// Create a new position
     /// </summary>
     [HttpPost]
-    public IActionResult Create([FromBody] CreatePositionRequest request)
+    public async Task<IActionResult> Create([FromBody] CreatePositionCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var positionId = EntityId.Create(Guid.NewGuid());
-            var name = Name.Create(request.Name);
-            var description = Description.Create(request.Description);
-            var now = UtcDateTime.Create(DateTime.UtcNow);
-
-            var position = Position.Create(
-                positionId,
-                name,
-                description,
-                IsActive.Create(true),
-                now,
-                now);
-
-            PositionStorage.Add(position);
+            var position = await _mediator.Send(request, cancellationToken);
 
             return CreatedAtAction(nameof(GetById), new { id = position.Id.Value }, new
             {
@@ -105,14 +98,6 @@ public class PositionsController : ControllerBase
         {
             return BadRequest(new { message = ex.Message });
         }
-        catch (InvalidOperationException ex)
-        {
-            if (ex.Message.Contains("already exists"))
-            {
-                return Conflict(new { message = ex.Message });
-            }
-            return BadRequest(new { message = ex.Message });
-        }
         catch (Exception ex)
         {
             return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Internal server error" });
@@ -123,59 +108,35 @@ public class PositionsController : ControllerBase
     /// Update an existing position
     /// </summary>
     [HttpPatch("{id:guid}")]
-    public IActionResult Update(Guid id, [FromBody] UpdatePositionRequest request)
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdatePositionCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var positionId = EntityId.Create(id);
-            var position = PositionStorage.GetById(positionId);
-
-            if (position == null)
+            var command = new UpdatePositionCommand
             {
-                return NotFound(new { message = "Position not found" });
-            }
+                Id = id,
+                Name = request.Name,
+                Description = request.Description
+            };
 
-            var updatedAt = UtcDateTime.Create(DateTime.UtcNow);
-            var updatedPosition = position;
-
-            if (!string.IsNullOrEmpty(request.Name))
-            {
-                var name = Name.Create(request.Name);
-                updatedPosition = updatedPosition.UpdateName(name, updatedAt);
-            }
-
-            if (!string.IsNullOrEmpty(request.Description))
-            {
-                var description = Description.Create(request.Description);
-                updatedPosition = updatedPosition.UpdateDescription(description, updatedAt);
-            }
-
-            PositionStorage.UpdatePosition(updatedPosition);
+            var position = await _mediator.Send(command, cancellationToken);
 
             return Ok(new
             {
-                updatedPosition.Id,
-                updatedPosition.Name,
-                updatedPosition.Description,
-                updatedPosition.IsActive,
-                updatedPosition.CreatedAt,
-                updatedPosition.UpdatedAt
+                position.Id,
+                position.Name,
+                position.Description,
+                position.IsActive,
+                position.CreatedAt,
+                position.UpdatedAt
             });
         }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
         catch (InvalidOperationException ex)
         {
-            if (ex.Message.Contains("archived"))
-            {
-                return NotFound(new { message = "Position not found" });
-            }
-            if (ex.Message.Contains("already exists"))
-            {
-                return Conflict(new { message = ex.Message });
-            }
+            return NotFound(new { message = ex.Message });
+        }
+        catch (ArgumentException ex)
+        {
             return BadRequest(new { message = ex.Message });
         }
         catch (Exception ex)
@@ -185,54 +146,22 @@ public class PositionsController : ControllerBase
     }
 
     /// <summary>
-    /// Soft delete (archive) a position
+    /// Delete a position
     /// </summary>
     [HttpDelete("{id:guid}")]
-    public IActionResult Delete(Guid id)
+    public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
     {
         try
         {
-            var positionId = EntityId.Create(id);
-            PositionStorage.Remove(positionId);
-            return NoContent();
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            if (ex.Message.Contains("not found") || ex.Message.Contains("archived"))
+            var command = new DeletePositionCommand { Id = id };
+            var result = await _mediator.Send(command, cancellationToken);
+
+            if (!result)
             {
                 return NotFound(new { message = "Position not found" });
             }
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Internal server error" });
-        }
-    }
 
-    /// <summary>
-    /// Hard delete (permanent removal) a position
-    /// </summary>
-    [HttpDelete("{id:guid}/permanent")]
-    public IActionResult HardDelete(Guid id)
-    {
-        try
-        {
-            var positionId = EntityId.Create(id);
-            PositionStorage.HardRemove(positionId);
             return NoContent();
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return NotFound(new { message = "Position not found" });
         }
         catch (Exception ex)
         {

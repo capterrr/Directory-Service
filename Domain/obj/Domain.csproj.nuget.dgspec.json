@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\Directory-Service\\Domain\\Domain.csproj": {}
   },
   "projects": {
@@ -12,25 +13,42 @@
         "projectPath": "D:\\Directory-Service\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\stud\\.nuget\\packages\\",
         "outputPath": "D:\\Directory-Service\\Domain\\obj\\",
+=======
+    "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\snfex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\obj\\",
+>>>>>>> 28c0159 (Update)
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\stud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+          "C:\\Users\\snfex\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> 28c0159 (Update)
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -44,11 +62,15 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
+<<<<<<< HEAD
         "SdkAnalysisLevel": "10.0.100"
+=======
+        "SdkAnalysisLevel": "10.0.200"
+>>>>>>> 28c0159 (Update)
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "imports": [
             "net461",
             "net462",
@@ -63,6 +85,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
+<<<<<<< HEAD
               "version": "[6.0.36, 6.0.36]"
             },
             {
@@ -72,6 +95,17 @@
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
               "version": "[6.0.36, 6.0.36]"
+=======
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+>>>>>>> 28c0159 (Update)
             }
           ],
           "frameworkReferences": {
@@ -79,7 +113,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.108\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
+>>>>>>> 28c0159 (Update)
         }
       }
     }

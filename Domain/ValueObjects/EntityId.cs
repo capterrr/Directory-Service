@@ -9,6 +9,11 @@ public sealed record EntityId
         Value = value;
     }
 
+    public static EntityId Create()
+    {
+        return new EntityId(Guid.NewGuid());
+    }
+
     public static EntityId Create(Guid value)
     {
         if (value == Guid.Empty)
