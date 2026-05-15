@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\Directory-Service\\DirectoryService\\DirectoryService.csproj": {}
   },
   "projects": {
@@ -12,28 +13,56 @@
         "projectPath": "D:\\Directory-Service\\DirectoryService\\DirectoryService.csproj",
         "packagesPath": "C:\\Users\\stud\\.nuget\\packages\\",
         "outputPath": "D:\\Directory-Service\\DirectoryService\\obj\\",
+=======
+    "C:\\Users\\snfex\\Documents\\Directory-Service\\DirectoryService\\DirectoryService.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\snfex\\Documents\\Directory-Service\\DirectoryService\\DirectoryService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\snfex\\Documents\\Directory-Service\\DirectoryService\\DirectoryService.csproj",
+        "projectName": "DirectoryService",
+        "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\DirectoryService\\DirectoryService.csproj",
+        "packagesPath": "C:\\Users\\snfex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\DirectoryService\\obj\\",
+>>>>>>> 28c0159 (Update)
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\stud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+          "C:\\Users\\snfex\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> 28c0159 (Update)
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
+<<<<<<< HEAD
               "D:\\Directory-Service\\Domain\\Domain.csproj": {
                 "projectPath": "D:\\Directory-Service\\Domain\\Domain.csproj"
+=======
+              "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Application\\DirectoryService.Application.csproj": {
+                "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Application\\DirectoryService.Application.csproj"
+              },
+              "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Infrastructure\\DirectoryService.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Infrastructure\\DirectoryService.Infrastructure.csproj"
+>>>>>>> 28c0159 (Update)
               }
             }
           }
@@ -48,12 +77,22 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
+<<<<<<< HEAD
         "SdkAnalysisLevel": "10.0.100"
+=======
+        "SdkAnalysisLevel": "10.0.200"
+>>>>>>> 28c0159 (Update)
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -73,6 +112,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
+<<<<<<< HEAD
               "version": "[6.0.36, 6.0.36]"
             },
             {
@@ -86,6 +126,21 @@
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
               "version": "[6.0.36, 6.0.36]"
+=======
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+>>>>>>> 28c0159 (Update)
             }
           ],
           "frameworkReferences": {
@@ -96,6 +151,7 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.108\\RuntimeIdentifierGraph.json"
         }
       }
@@ -108,25 +164,43 @@
         "projectPath": "D:\\Directory-Service\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\stud\\.nuget\\packages\\",
         "outputPath": "D:\\Directory-Service\\Domain\\obj\\",
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\snfex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\obj\\",
+>>>>>>> 28c0159 (Update)
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\stud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+          "C:\\Users\\snfex\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> 28c0159 (Update)
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -140,11 +214,15 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
+<<<<<<< HEAD
         "SdkAnalysisLevel": "10.0.100"
+=======
+        "SdkAnalysisLevel": "10.0.200"
+>>>>>>> 28c0159 (Update)
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "imports": [
             "net461",
             "net462",
@@ -159,6 +237,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
+<<<<<<< HEAD
               "version": "[6.0.36, 6.0.36]"
             },
             {
@@ -168,6 +247,17 @@
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
               "version": "[6.0.36, 6.0.36]"
+=======
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+>>>>>>> 28c0159 (Update)
             }
           ],
           "frameworkReferences": {
@@ -175,7 +265,276 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.108\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\snfex\\Documents\\Directory-Service\\Infrastructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\snfex\\Documents\\Directory-Service\\Infrastructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj",
+        "projectName": "Infrastructure.PostgreSQL",
+        "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Infrastructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj",
+        "packagesPath": "C:\\Users\\snfex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Infrastructure.PostgreSQL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\snfex\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Application\\DirectoryService.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Application\\DirectoryService.Application.csproj",
+        "projectName": "DirectoryService.Application",
+        "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Application\\DirectoryService.Application.csproj",
+        "packagesPath": "C:\\Users\\snfex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\snfex\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Infrastructure\\DirectoryService.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Infrastructure\\DirectoryService.Infrastructure.csproj",
+        "projectName": "DirectoryService.Infrastructure",
+        "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Infrastructure\\DirectoryService.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\snfex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\snfex\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\snfex\\Documents\\Directory-Service\\Infrastructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj": {
+                "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\Infrastructure.PostgreSQL\\Infrastructure.PostgreSQL.csproj"
+              },
+              "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Application\\DirectoryService.Application.csproj": {
+                "projectPath": "C:\\Users\\snfex\\Documents\\Directory-Service\\src\\DirectoryService.Application\\DirectoryService.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.26, 8.0.26]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json"
+>>>>>>> 28c0159 (Update)
         }
       }
     }

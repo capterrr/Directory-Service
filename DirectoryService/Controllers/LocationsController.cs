@@ -1,6 +1,6 @@
-using DirectoryService.Storage;
-using Domain.Entities;
-using Domain.ValueObjects;
+using DirectoryService.Application.Commands.Location;
+using DirectoryService.Application.Queries.Location;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DirectoryService.Controllers;
@@ -9,15 +9,20 @@ namespace DirectoryService.Controllers;
 [Route("api/locations")]
 public class LocationsController : ControllerBase
 {
-    /// <summary>
-    /// Get all active locations
-    /// </summary>
+    private readonly IMediator _mediator;
+
+    public LocationsController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {
         try
         {
-            var locations = LocationStorage.GetAll();
+            var query = new GetAllLocationsQuery();
+            var locations = await _mediator.Send(query, cancellationToken);
             return Ok(locations.Select(l => new
             {
                 l.Id,
@@ -35,15 +40,14 @@ public class LocationsController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Get location by ID
-    /// </summary>
     [HttpGet("{id:guid}")]
-    public IActionResult GetById(Guid id)
+    public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
     {
         try
         {
-            var location = LocationStorage.GetById(EntityId.Create(id));
+            var query = new GetLocationByIdQuery { Id = id };
+            var location = await _mediator.Send(query, cancellationToken);
+
             if (location == null)
             {
                 return NotFound(new { message = "Location not found" });
@@ -60,40 +64,18 @@ public class LocationsController : ControllerBase
                 location.UpdatedAt
             });
         }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
         catch (Exception ex)
         {
             return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Internal server error" });
         }
     }
 
-    /// <summary>
-    /// Create a new location
-    /// </summary>
     [HttpPost]
-    public IActionResult Create([FromBody] CreateLocationRequest request)
+    public async Task<IActionResult> Create([FromBody] CreateLocationCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var locationId = EntityId.Create(Guid.NewGuid());
-            var addressString = $"{request.Street}, {request.City}, {request.State} {request.ZipCode}";
-            var address = Address.Create(addressString);
-            var name = Name.Create(request.Name);
-            var timezone = Timezone.Create(request.Timezone);
-            var now = UtcDateTime.Create(DateTime.UtcNow);
-
-            var location = Location.Create(
-                locationId,
-                address,
-                name,
-                timezone,
-                now,
-                now);
-
-            LocationStorage.Add(location);
+            var location = await _mediator.Send(request, cancellationToken);
 
             return CreatedAtAction(nameof(GetById), new { id = location.Id.Value }, new
             {
@@ -112,11 +94,7 @@ public class LocationsController : ControllerBase
         }
         catch (InvalidOperationException ex)
         {
-            if (ex.Message.Contains("already exists"))
-            {
-                return Conflict(new { message = ex.Message });
-            }
-            return BadRequest(new { message = ex.Message });
+            return Conflict(new { message = ex.Message });
         }
         catch (Exception ex)
         {
@@ -124,56 +102,44 @@ public class LocationsController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Update an existing location
-    /// </summary>
     [HttpPatch("{id:guid}")]
-    public IActionResult Update(Guid id, [FromBody] UpdateLocationRequest request)
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateLocationCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            var locationId = EntityId.Create(id);
-            var location = LocationStorage.GetById(locationId);
-
-            if (location == null)
+            var command = new UpdateLocationCommand
             {
-                return NotFound(new { message = "Location not found" });
-            }
+                Id = id,
+                Name = request.Name,
+                Description = request.Description,
+                AddressLine1 = request.AddressLine1,
+                AddressLine2 = request.AddressLine2,
+                City = request.City,
+                Region = request.Region,
+                PostalCode = request.PostalCode,
+                Country = request.Country,
+                Timezone = request.Timezone
+            };
 
-            var name = Name.Create(request.Name);
-            var timezone = Timezone.Create(request.Timezone);
-            var addressString = $"{request.Street}, {request.City}, {request.State} {request.ZipCode}";
-            var address = Address.Create(addressString);
-            var updatedAt = UtcDateTime.Create(DateTime.UtcNow);
-
-            var updatedLocation = location.Update(name, timezone, address, updatedAt);
-            LocationStorage.UpdateLocation(updatedLocation);
+            var location = await _mediator.Send(command, cancellationToken);
 
             return Ok(new
             {
-                updatedLocation.Id,
-                updatedLocation.Name,
-                updatedLocation.Address,
-                updatedLocation.Timezone,
-                updatedLocation.IsActive,
-                updatedLocation.CreatedAt,
-                updatedLocation.UpdatedAt
+                location.Id,
+                location.Name,
+                location.Address,
+                location.Timezone,
+                location.IsActive,
+                location.CreatedAt,
+                location.UpdatedAt
             });
         }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
         catch (InvalidOperationException ex)
         {
-            if (ex.Message.Contains("archived"))
-            {
-                return NotFound(new { message = "Location not found" });
-            }
-            if (ex.Message.Contains("already exists"))
-            {
-                return Conflict(new { message = ex.Message });
-            }
+            return NotFound(new { message = ex.Message });
+        }
+        catch (ArgumentException ex)
+        {
             return BadRequest(new { message = ex.Message });
         }
         catch (Exception ex)
@@ -182,55 +148,20 @@ public class LocationsController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Soft delete (archive) a location
-    /// </summary>
     [HttpDelete("{id:guid}")]
-    public IActionResult Delete(Guid id)
+    public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
     {
         try
         {
-            var locationId = EntityId.Create(id);
-            LocationStorage.Remove(locationId);
-            return NoContent();
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            if (ex.Message.Contains("not found") || ex.Message.Contains("archived"))
+            var command = new DeleteLocationCommand { Id = id };
+            var result = await _mediator.Send(command, cancellationToken);
+
+            if (!result)
             {
                 return NotFound(new { message = "Location not found" });
             }
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Internal server error" });
-        }
-    }
 
-    /// <summary>
-    /// Hard delete (permanent removal) a location
-    /// </summary>
-    [HttpDelete("{id:guid}/permanent")]
-    public IActionResult HardDelete(Guid id)
-    {
-        try
-        {
-            var locationId = EntityId.Create(id);
-            LocationStorage.HardRemove(locationId);
             return NoContent();
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (InvalidOperationException ex)
-        {
-            return NotFound(new { message = "Location not found" });
         }
         catch (Exception ex)
         {
